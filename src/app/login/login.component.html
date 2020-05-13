@@ -1,0 +1,83 @@
+<h2>{{"login.screen.heading" | translate}}</h2>
+<div 
+*ngIf="authError" 
+style="color:red">{{authErrorMsg}}</div>
+<form 
+[formGroup]="loginForm" 
+(ngSubmit)="onSubmit(loginForm.value)">
+    <mat-card 
+    class="pt-2 pb-2">
+        <div id="username-container">
+            <mat-form-field 
+            appearance="outline">
+                <mat-label>{{'login.screen.username.placeholder' | translate}}</mat-label>
+                <input 
+                matInput 
+                placeholder="{{'login.screen.username.placeholder' | translate}}"
+                formControlName="username" 
+                class="form-control" 
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+        </div>
+    
+        <div id="password-container">
+            <mat-form-field 
+            appearance="outline">
+                <mat-label>{{'login.screen.password.placeholder' | translate}}</mat-label>
+                <input 
+                matInput 
+                placeholder="{{'login.screen.password.placeholder' | translate}}" 
+                type="password"
+                formControlName="password" 
+                class="form-control" 
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+        </div>
+    </mat-card>
+    
+
+    <div class="ml-2">
+        <div 
+        id="all-empty-error-msg" 
+        *ngIf="submitted && f.password.errors && f.username.errors" 
+        class="invalid-feedback">
+            <div 
+            id="all-blank-error" 
+            *ngIf="f.password.errors.required && f.username.errors.required" 
+            style="color:red">{{"login.screen.allBlank.error" | translate}}</div>
+        </div>
+    
+        <div 
+        id="username-error-msg" 
+        *ngIf="submitted && f.username.errors && !f.password.errors" 
+        class="invalid-feedback">
+            <div 
+            id="blank-username-error" 
+            *ngIf="f.username.errors.required" 
+            style="color:red">{{'login.screen.pleaseEnterUserName' | translate}}</div>
+        </div>
+    
+        <div 
+        id="password-error-msg" 
+        *ngIf="submitted && f.password.errors && !f.username.errors" 
+        class="invalid-feedback">
+            <div 
+            id="blank-password-error" 
+            *ngIf="f.password.errors.required" 
+            style="color:red">{{"login.screen.pleaseEnterPassword" | translate}}</div>
+        </div>
+    
+        <div 
+        id="login-btn-container" 
+        class="form-group">
+            <button  
+            id="login-btn"
+            mat-raised-button 
+            color="primary" 
+            class="w-100">{{"login.screen.loginButtonLabel" | translate}}</button>
+        </div>
+    </div>
+</form>
+

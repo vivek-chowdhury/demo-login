@@ -1,0 +1,9 @@
+{
+    "login.screen.heading": "Login",
+    "login.screen.loginButtonLabel": "Login",
+    "login.screen.username.placeholder": "Username",
+    "login.screen.password.placeholder": "Password",
+    "login.screen.allBlank.error": "Please enter valid user credentials",
+    "login.screen.pleaseEnterUserName": "Please enter username.",
+    "login.screen.pleaseEnterPassword": "Please enter password."
+}
